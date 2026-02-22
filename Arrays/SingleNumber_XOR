@@ -1,0 +1,37 @@
+Problem: Single Number in Array
+Leetcode: 136
+Category: Array / Bit Manipulation
+
+Approach:
+- Use XOR to cancel out duplicate numbers
+- XOR of a number with itself is 0
+- XOR of a number with 0 is the number itself
+
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+#include<iostream>
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int ans = 0;
+        for (int val : nums) {
+            ans ^= val; // XOR accumulation
+        }
+        return ans;
+    }
+};
+
+// Example usage
+/*
+int main() {
+    Solution sol;
+    vector<int> nums = {4,1,2,1,2};
+    cout << sol.singleNumber(nums) << endl; 
+    return 0;
+}
+*/
+// Output: 4
