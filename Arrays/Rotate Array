@@ -1,0 +1,35 @@
+Problem: Rotate Array
+LeetCode #189
+Approach: Use extra array to shift elements
+Time Complexity: O(n)
+Space Complexity: O(d), where d = n - k
+
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        int n = nums.size();
+        if (n == 0) return;
+
+        k = k % n; 
+        if (k == 0) return; 
+
+        int d = n - k; 
+        vector<int> temp(d);
+
+        for (int i = 0; i < d; i++) {
+            temp[i] = nums[i];
+        }
+
+        for (int i = d; i < n; i++) {
+            nums[i - d] = nums[i];
+        }
+
+        
+        for (int i = 0; i < d; i++) {
+            nums[n - d + i] = temp[i];
+        }
+    }
+};
