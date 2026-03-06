@@ -1,0 +1,28 @@
+Problem: Contains Duplicate
+LeetCode #217
+Approach: Sort the array and check adjacent elements
+Time Complexity: O(n log n)
+ Space Complexity: O(1) (ignoring sorting space)
+
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+
+        // Step 1: Sort the array
+        sort(nums.begin(), nums.end());
+
+        // Step 2: Check adjacent elements for duplicates
+        for (int i = 1; i < nums.size(); i++) {
+            if (nums[i] == nums[i - 1]) {
+                return true;
+            }
+        }
+
+        // No duplicates found
+        return false;
+    }
+};
