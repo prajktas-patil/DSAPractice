@@ -1,0 +1,28 @@
+Problem: Missing Number
+LeetCode #268
+Approach: XOR Technique
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+
+        int n = nums.size();
+        int xor1 = 0;   // XOR of numbers from 0 to n
+        int xor2 = 0;   // XOR of array elements
+
+        for (int i = 0; i < n; i++) {
+            xor2 ^= nums[i];  // XOR all elements of array
+            xor1 ^= i;        // XOR all indices
+        }
+
+        xor1 ^= n;  // include the last number (n)
+
+        // Missing number will remain after XOR cancellation
+        return xor1 ^ xor2;
+    }
+};
