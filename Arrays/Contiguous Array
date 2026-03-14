@@ -1,0 +1,41 @@
+Problem: Contiguous Array (Equal number of 0s and 1s)
+LeetCode #525
+Approach: Prefix sum with hashmap
+ Time Complexity: O(n)
+Space Complexity: O(n)
+
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+class Solution {
+public:
+    int findMaxLength(vector<int>& nums) {
+
+        unordered_map<int, int> mp;
+        mp[0] = -1; // base case: sum 0 at index -1
+
+        int sum = 0;        // running sum: treat 0 as -1
+        int maxLength = 0;  // maximum length of contiguous subarray
+
+        for (int i = 0; i < nums.size(); i++) {
+
+            // Convert 0 to -1 for prefix sum logic
+            if (nums[i] == 0)
+                sum += -1;
+            else
+                sum += 1;
+
+            // If this sum has been seen before, update maxLength
+            if (mp.find(sum) != mp.end()) {
+                maxLength = max(maxLength, i - mp[sum]);
+            } 
+            else {
+                // First time seeing this sum, store index
+                mp[sum] = i;
+            }
+        }
+
+        return maxLength;
+    }
+};
