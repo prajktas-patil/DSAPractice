@@ -1,0 +1,30 @@
+Problem: Rearrange Array Elements by Sign
+LeetCode #2149
+Approach: Place positive numbers at even indices and negative numbers at odd indices
+Time Complexity: O(n)
+Space Complexity: O(n)
+
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> rearrangeArray(vector<int>& nums) {
+
+        int n = nums.size();
+        vector<int> ans(n);        // Result array
+        int pos = 0, neg = 1;      // Even index for positives, odd index for negatives
+
+        for (int num : nums) {
+            if (num > 0) {
+                ans[pos] = num;    // Place positive at even index
+                pos += 2;
+            } else {
+                ans[neg] = num;    // Place negative at odd index
+                neg += 2;
+            }
+        }
+
+        return ans;
+    }
+};
