@@ -1,0 +1,20 @@
+Problem: Count Digits in a Number
+Approach: Extract digits one by one and count them
+Time Complexity: O(log10 n) → proportional to number of digits
+Space Complexity: O(1)
+
+class Solution {
+public:
+    int countDigits(int n) {
+
+        int cnt = 0; 
+        while (n > 0) {
+
+            int lastDigit = n % 10; 
+            cnt = cnt + 1;         
+            n = n / 10;             
+        }
+
+        return cnt;
+    }
+};
