@@ -1,0 +1,20 @@
+Problem: Reverse Digits of a Number
+Approach: Iteratively extract last digit and build the reversed number
+Time Complexity: O(log10 N) → proportional to number of digits
+Space Complexity: O(1)
+
+class Solution {
+public:
+    int reverseDigits(int N) {
+
+        int revNum = 0; 
+        while (N > 0) {
+
+            int lastDigit = N % 10;           
+            revNum = (revNum * 10) + lastDigit;  
+            N = N / 10;                       
+        }
+
+        return revNum;
+    }
+};
