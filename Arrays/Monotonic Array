@@ -1,0 +1,27 @@
+Problem: Monotonic Array
+LeetCode #896
+Approach: Check if array is either entirely non-increasing or non-decreasing
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    bool isMonotonic(vector<int>& nums) {
+
+        bool increasing = true;  // Assume array is non-decreasing
+        bool decreasing = true;  // Assume array is non-increasing
+
+        // Traverse the array and check monotonicity
+        for (int i = 1; i < nums.size(); i++) {
+            
+            if (nums[i] > nums[i - 1]) decreasing = false; // violates decreasing
+            if (nums[i] < nums[i - 1]) increasing = false; // violates increasing
+        }
+
+        // Array is monotonic if it is either increasing or decreasing
+        return increasing || decreasing;
+    }
+};
