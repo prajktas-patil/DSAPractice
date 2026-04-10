@@ -1,0 +1,38 @@
+Problem: Array Nesting
+LeetCode #565
+Approach: Traverse cycles and mark visited elements
+Time Complexity: O(n)
+Space Complexity: O(1) 
+
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+class Solution {
+public:
+    int arrayNesting(vector<int>& nums) {
+
+        int n = nums.size();
+        int maxLen = 0;
+
+     
+        for (int i = 0; i < n; i++) {
+
+            int count = 0;
+            int curr = i;
+
+        
+            while (nums[curr] != -1) {
+
+                int next = nums[curr];
+                nums[curr] = -1;  
+                curr = next;
+                count++;
+            }
+
+            maxLen = max(maxLen, count);
+        }
+
+        return maxLen;
+    }
+};
