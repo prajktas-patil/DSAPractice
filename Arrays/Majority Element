@@ -1,0 +1,31 @@
+Problem: Majority Element
+LeetCode #169
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+
+        int majority = 0;   
+        int count = 0;      
+
+        for (int num : nums) {
+
+               if (count == 0) {
+                majority = num;
+            }
+
+            if (num == majority) {
+                count++;
+            } else {
+                count--;
+            }
+        }
+
+        return majority;
+    }
+};
