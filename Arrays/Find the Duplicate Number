@@ -1,0 +1,28 @@
+Problem: Find the Duplicate Number
+LeetCode #287
+ Approach: Brute Force (Compare all pairs)
+Time Complexity: O(n^2)
+ Space Complexity: O(1)
+
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+
+        int n = nums.size();
+
+        // Check every pair
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+
+                if (nums[i] == nums[j]) {
+                    return nums[i];
+                }
+            }
+        }
+
+        return -1;
+    }
+};
